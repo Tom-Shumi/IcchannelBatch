@@ -21,6 +21,9 @@ dependencies {
 	implementation("com.amazonaws:aws-lambda-java-core:1.2.0")
 	implementation("com.googlecode.json-simple:json-simple:1.1.1")
 
+	implementation("org.elasticsearch:elasticsearch:7.10.2")
+	implementation("org.elasticsearch.client:elasticsearch-rest-high-level-client:7.10.2")
+
 	implementation("com.rometools:rome:1.18.0")
 }
 

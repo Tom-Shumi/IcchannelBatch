@@ -1,26 +1,30 @@
 package jp.ne.icchannel.batch
 
 import com.amazonaws.services.lambda.runtime.Context
-import jp.ne.icchannel.batch.service.RssFetchService
+import jp.ne.icchannel.batch.service.ElasticsearchService
+import jp.ne.icchannel.batch.service.FeedFetchService
 
 class App {
 
-    private val rssFetchService = RssFetchService()
+    private val feedFetchService = FeedFetchService()
+    private val elasticsearchService = ElasticsearchService()
 
     /**
      * lambdaのエンドポイント
      */
     fun handler(context: Context): String {
         val lambdaLogger = context.logger
-        lambdaLogger.log("test log")
+        lambdaLogger.log("start")
 
         execute()
 
-        return "test"
+        lambdaLogger.log("end")
+        return "ok"
     }
 
     fun execute() {
-        print("test")
+        val feed = feedFetchService.fetchFeed()
+        elasticsearchService.bulkRegisterThread(feed)
     }
 
 }

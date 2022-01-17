@@ -8,5 +8,17 @@ class Constant {
             "NEWまとめサイト速報" to "https://newmatosoku.com/feed/main/rss2.xml",
             "がーるずレポート" to "http://girlsreport.net/index.rdf"
         )
+        val FILTER_KEYWORD = listOf(
+            "犬",
+            "猫",
+            "動物",
+            "癒",
+            "笑",
+            "可愛"
+        )
+
+        val ELASTICSEARCH_HOST = "localhost"
+        val ELASTICSEARCH_PORT = 9200
+        val ELASTICSEARCH_SCHEME = "http"
     }
 }
