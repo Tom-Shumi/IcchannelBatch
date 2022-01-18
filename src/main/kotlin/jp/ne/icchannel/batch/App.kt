@@ -1,13 +1,19 @@
 package jp.ne.icchannel.batch
 
 import com.amazonaws.services.lambda.runtime.Context
+import jp.ne.icchannel.batch.elasticsearch.ElasticsearchClientRepository
+import jp.ne.icchannel.batch.elasticsearch.ElasticsearchConfig
 import jp.ne.icchannel.batch.service.ElasticsearchService
 import jp.ne.icchannel.batch.service.FeedFetchService
+import org.elasticsearch.client.RestHighLevelClient
 
 class App {
 
     private val feedFetchService = FeedFetchService()
-    private val elasticsearchService = ElasticsearchService()
+    private val elasticsearchConfig = ElasticsearchConfig()
+    private val restHighLevelClient = elasticsearchConfig.getClient()
+    private val elasticsearchClientRepository = ElasticsearchClientRepository(restHighLevelClient, elasticsearchConfig)
+    private val elasticsearchService = ElasticsearchService(elasticsearchClientRepository)
 
     /**
      * lambdaのエンドポイント

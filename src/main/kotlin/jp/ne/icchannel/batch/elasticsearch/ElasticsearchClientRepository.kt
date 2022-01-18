@@ -20,13 +20,8 @@ class ElasticsearchClientRepository(private var restHighLevelClient: RestHighLev
         this.restHighLevelClient = restHighLevelClient
     }
 
-    fun search(request: SearchRequest): SearchResponse? {
-        return try {
-            restHighLevelClient.search(request, RequestOptions.DEFAULT)
-        } catch (e: Exception) {
-            setClient(elasticsearchClientConfig.getRecreateClient())
-            null
-        }
+    fun search(request: SearchRequest): SearchResponse {
+        return restHighLevelClient.search(request, RequestOptions.DEFAULT)
     }
 
     fun createIndex(request: CreateIndexRequest) {

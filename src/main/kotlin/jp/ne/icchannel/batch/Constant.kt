@@ -14,11 +14,15 @@ class Constant {
             "動物",
             "癒",
             "笑",
-            "可愛"
+            "可愛",
+            "イッヌ",
+            "ネッコ",
+            "ゾウ"
         )
 
-        val ELASTICSEARCH_HOST = "localhost"
-        val ELASTICSEARCH_PORT = 9200
-        val ELASTICSEARCH_SCHEME = "http"
+        const val ELASTICSEARCH_HOST = "localhost"
+        const val ELASTICSEARCH_PORT = 9200
+        const val ELASTICSEARCH_SCHEME = "http"
+        const val ELASTICSEARCH_INDEX_THREAD = "thread"
     }
 }

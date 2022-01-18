@@ -15,15 +15,15 @@ class FeedFetchService {
     fun fetchFeed(): Map<String, List<Thread>> {
         val rssMap = mutableMapOf<String, List<Thread>>()
         for (site in Constant.FETCH_URL_MAP) {
-            rssMap[site.key] = createThreadList(site.value)
+            rssMap[site.key] = createThreadList(site.key, site.value)
         }
         return rssMap
     }
 
-    private fun createThreadList(url: String): List<Thread> {
+    private fun createThreadList(siteName: String, url: String): List<Thread> {
         try {
             XmlReader(URL(url)).use { reader ->
-            return fetchAndCreateList(reader)
+            return fetchAndCreateList(siteName, reader)
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -31,10 +31,10 @@ class FeedFetchService {
         }
     }
 
-    private fun fetchAndCreateList(reader: XmlReader): List<Thread> {
+    private fun fetchAndCreateList(siteName: String, reader: XmlReader): List<Thread> {
         val entryList = SyndFeedInput().build(reader).entries
         val filteredEntryList =  entryList.filter { filterEntry(it) }
-        return filteredEntryList.map { toThread(it) }
+        return filteredEntryList.map { toThread(it, siteName) }
     }
 
     private fun filterEntry(e: SyndEntry): Boolean {
@@ -47,7 +47,7 @@ class FeedFetchService {
         return false
     }
 
-    private fun toThread(e: SyndEntry): Thread {
-        return Thread(e.title, e.uri, DateTimeUtil.toDateTimeUtil(e.publishedDate))
+    private fun toThread(e: SyndEntry, siteName: String): Thread {
+        return Thread(e.title, e.uri, DateTimeUtil.toDateTimeUtil(e.publishedDate), siteName)
     }
 }
