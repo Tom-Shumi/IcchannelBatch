@@ -8,16 +8,16 @@ class Constant {
             "NEWまとめサイト速報" to "https://newmatosoku.com/feed/main/rss2.xml",
             "がーるずレポート" to "http://girlsreport.net/index.rdf"
         )
-        val FILTER_KEYWORD = listOf(
-            "犬",
-            "猫",
-            "動物",
-            "癒",
-            "笑",
-            "可愛",
-            "イッヌ",
-            "ネッコ",
-            "ゾウ"
+        val FILTER_KEYWORD_MAP = mapOf(
+            "犬" to "dog",
+            "猫" to "cat",
+            "動物" to "animal",
+            "癒" to "relax",
+            "笑" to "laugh",
+            "可愛" to "cute",
+            "イッヌ" to "dog",
+            "ネッコ" to "cat",
+            "ゾウ" to "animal"
         )
 
         const val ELASTICSEARCH_HOST = "localhost"

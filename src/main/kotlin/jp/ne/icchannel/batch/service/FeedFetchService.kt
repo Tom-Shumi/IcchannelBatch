@@ -38,9 +38,10 @@ class FeedFetchService {
     }
 
     private fun filterEntry(e: SyndEntry): Boolean {
-        for (keyword in Constant.FILTER_KEYWORD) {
-            if (e.title.contains(keyword) ||
-                (Objects.nonNull(e.description) && Objects.nonNull(e.description.value) && e.description.value.contains(keyword))) {
+        for (keyword in Constant.FILTER_KEYWORD_MAP) {
+            if (e.title.contains(keyword.key) ||
+                (Objects.nonNull(e.description) && Objects.nonNull(e.description.value) && e.description.value.contains(keyword.key))) {
+                e.comments = keyword.value
                 return true
             }
         }
@@ -48,6 +49,6 @@ class FeedFetchService {
     }
 
     private fun toThread(e: SyndEntry, siteName: String): Thread {
-        return Thread(e.title, e.uri, DateTimeUtil.toDateTimeUtil(e.publishedDate), siteName)
+        return Thread(e.title, e.uri, DateTimeUtil.toDateTimeUtil(e.publishedDate), e.comments, siteName)
     }
 }

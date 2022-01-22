@@ -16,7 +16,7 @@ class ElasticsearchClientRepository(private var restHighLevelClient: RestHighLev
                                     private val elasticsearchClientConfig: ElasticsearchConfig) {
 
 
-    fun setClient(restHighLevelClient: RestHighLevelClient) {
+    private fun setClient(restHighLevelClient: RestHighLevelClient) {
         this.restHighLevelClient = restHighLevelClient
     }
 
