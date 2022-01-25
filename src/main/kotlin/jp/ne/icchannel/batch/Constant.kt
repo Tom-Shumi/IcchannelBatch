@@ -24,5 +24,7 @@ class Constant {
         const val ELASTICSEARCH_PORT = 9200
         const val ELASTICSEARCH_SCHEME = "http"
         const val ELASTICSEARCH_INDEX_THREAD = "thread"
+
+        const val MAX_DOCUMENT_COUNT = 5000
     }
 }

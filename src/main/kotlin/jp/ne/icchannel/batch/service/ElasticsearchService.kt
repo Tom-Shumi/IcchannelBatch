@@ -18,6 +18,10 @@ class ElasticsearchService(private val elasticsearchClientRepository: Elasticsea
         }
     }
 
+    fun deleteExpiredThread() {
+        // TODO
+    }
+
     private fun registerThread(threadList: List<Thread>) {
         for (thread in threadList) {
             if (isExistsThreadByUrl(thread.url)) {

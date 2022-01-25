@@ -30,6 +30,7 @@ class App {
     fun execute() {
         val feed = feedFetchService.fetchFeed()
         elasticsearchService.bulkRegisterThread(feed)
+        elasticsearchService.deleteExpiredThread()
     }
 
 }

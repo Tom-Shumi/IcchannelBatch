@@ -30,6 +30,10 @@ class ElasticsearchClientRepository(private var restHighLevelClient: RestHighLev
 
     fun deleteAllDocument(request: DeleteByQueryRequest) {
         request.setQuery(QueryBuilders.matchAllQuery())
+        deleteDocument(request)
+    }
+
+    fun deleteDocument(request: DeleteByQueryRequest) {
         restHighLevelClient.deleteByQuery(request, RequestOptions.DEFAULT)
     }
 
