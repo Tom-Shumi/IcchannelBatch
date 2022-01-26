@@ -25,6 +25,6 @@ class Constant {
         const val ELASTICSEARCH_SCHEME = "http"
         const val ELASTICSEARCH_INDEX_THREAD = "thread"
 
-        const val MAX_DOCUMENT_COUNT = 5000
+        const val EXPIRED_PERIOD = "now-180d" // 半年間記事を保持
     }
 }
