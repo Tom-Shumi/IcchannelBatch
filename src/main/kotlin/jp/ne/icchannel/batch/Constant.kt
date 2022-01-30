@@ -20,7 +20,7 @@ class Constant {
             "ゾウ" to "animal"
         )
 
-        const val ELASTICSEARCH_HOST = "18.180.223.15"
+        const val ELASTICSEARCH_HOST = "localhost"
         const val ELASTICSEARCH_PORT = 9200
         const val ELASTICSEARCH_SCHEME = "http"
         const val ELASTICSEARCH_INDEX_THREAD = "thread"
