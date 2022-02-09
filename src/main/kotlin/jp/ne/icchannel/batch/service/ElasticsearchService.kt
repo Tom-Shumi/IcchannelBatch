@@ -6,6 +6,7 @@ import jp.ne.icchannel.batch.domain.Thread
 import jp.ne.icchannel.batch.elasticsearch.ElasticsearchClientRepository
 import org.elasticsearch.action.index.IndexRequest
 import org.elasticsearch.action.search.SearchRequest
+import org.elasticsearch.action.support.WriteRequest
 import org.elasticsearch.index.query.*
 import org.elasticsearch.index.reindex.DeleteByQueryRequest
 import org.elasticsearch.search.SearchHit
@@ -51,7 +52,7 @@ class ElasticsearchService(private val elasticsearchClientRepository: Elasticsea
 
     private fun registerDocument(thread: Thread): Boolean {
         val request = IndexRequest(ELASTICSEARCH_INDEX_THREAD).source(thread.toMap())
-
+        request.refreshPolicy = WriteRequest.RefreshPolicy.IMMEDIATE
         return elasticsearchClientRepository.registerDocument(request)
     }
 }
